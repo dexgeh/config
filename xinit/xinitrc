@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+xrdb -merge $HOME/.Xresources
+eval $(gpg-agent --daemon)
+feh --bg-center $HOME/pics/XMonad-keybindings.png
+$HOME/bin/apod &
+urxvtd -f
+pulseaudio -D
+nohup redshift >/dev/null 2>/dev/null &
+compton -b --backend glx
+xsetroot -cursor_name left_ptr
+setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
+exec $HOME/.cabal/bin/xmonad

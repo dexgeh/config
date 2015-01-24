@@ -1,0 +1,111 @@
+# start X on login
+#if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
+#  PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:.
+#  exec startx
+#fi
+
+#history
+HISTFILE=~/.histfile
+HISTSIZE=2000
+SAVEHIST=2000
+setopt hist_ignore_dups
+setopt sharehistory
+
+#fix keys
+bindkey '^?' backward-delete-char
+bindkey '^[[7~' beginning-of-line
+bindkey '^[[5~' up-line-or-history
+bindkey '^[[3~' delete-char
+bindkey '^[[8~' end-of-line
+bindkey '^[[6~' down-line-or-history
+bindkey '^[[A' up-line-or-search
+bindkey '^[[D' backward-char
+bindkey '^[[B' down-line-or-search
+bindkey '^[[C' forward-char 
+bindkey '^[[2~' overwrite-mode
+
+#autocomplete
+fpath=(~/.zsh/completion $fpath)
+zstyle :compinstall filename '~/.zshrc'
+autoload -Uz compinit
+compinit
+#sudo completion
+zstyle ':completion:*:sudo:*' $PATH
+#menu completion
+zstyle ':completion:*' menu select
+# case-insensitive,partial-word and then substring completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+setopt completealiases
+
+#better globbing
+setopt extendedglob
+
+#prompt
+autoload -U colors
+colors
+
+PROMPT='%B%m%b> '
+RPROMPT='%~ %(?..[%?] )%*'
+
+# colors
+[[ -z $LS_COLORS ]] && eval $(dircolors -b ~/.zsh/LS_COLORS/LS_COLORS)
+
+#aliases
+alias ls='ls -lFh --color=always --group-directories-first'
+alias sl='sl -alF && ls -lFhSr --color=always'
+alias cp='cp -v'
+alias mv='mv -vi'
+alias rm='rm -v'
+alias grep='LANG=C grep --color=auto'
+alias egrep='LANG=C egrep --color=auto'
+alias ag='LANG=C ag'
+alias tree='tree -L 2 --dirsfirst'
+alias sd='sudo systemctl'
+alias pgrep='pgrep -l'
+alias ag='ag --ignore-dir node_modules'
+
+export EDITOR=/usr/bin/vim
+export BROWSER=/usr/bin/firefox
+
+# welcome line
+if [[ ! -z $COLUMNS ]]; then
+    DATESTR=$(date +'%A, %_d %B %Y')
+    USERHOST='\e[1;37m'$USER'\e[0m at \e[1;37m'$HOST'\e[0m'
+    printf "$USERHOST%$(expr $COLUMNS - ${#DATESTR} - ${#USERHOST} + 25)s$DATESTR\n"
+    unset DATESTR
+    unset USERHOST
+else
+    echo "$USER@$HOST - $(date +'%A, %d %B %Y - %H:%M.%S')"
+fi
+
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=white,bold'
+
+function serve() {
+    PORT=$(expr 65536 - $$)
+    $BROWSER http://127.0.0.1:$PORT/
+    python -m http.server $PORT
+}
+
+source $HOME/.zsh/ap/ap.zsh
+
+function m() {
+  echo udevil mount /dev/$1
+  udevil mount /dev/$1
+  echo mounted media:
+  grep media =(mount)
+}
+
+function u() {
+  echo udevil umount /dev/$1
+  udevil umount /dev/$1
+  if [[ $1 = sr0 ]]; then
+    eject /dev/sr0
+  fi
+  echo mounted media:
+  grep media =(mount)
+}
+
+function bak() {
+  cp $1 $1.$(date +%s)
+}

@@ -1,0 +1,73 @@
+#!/bin/sh
+
+function github_clone() {
+	git clone --depth 1 http://github.com/$1.git $2
+}
+
+set -x
+
+case $1 in
+  (git)
+    ln -s $PWD/git/gitconfig $HOME/.gitconfig
+    ;;
+  (vim)
+    ln -s $PWD/vim/vimrc $HOME/.vimrc
+    ln -s $PWD/vim/dotdir $HOME/.vim
+    mkdir $PWD/vim/dotdir
+    mkdir $PWD/vim/dotdir/bundle
+    mkdir $PWD/vim/dotdir/autoload
+    github_clone tpope/vim-pathogen temp
+    cp -r temp/autoload $HOME/.vim/
+    rm -rf temp
+    cd $HOME/.vim/bundle
+    github_clone fholgado/minibufexpl.vim
+    github_clone Lokaltog/vim-powerline
+    github_clone ervandew/supertab
+    github_clone Townk/vim-autoclose
+    github_clone mtscout6/vim-cjsx
+    github_clone kchmck/vim-coffee-script
+    github_clone wavded/vim-stylus
+    github_clone wting/rust.vim
+    ;;
+  (zsh)
+    ln -s $PWD/zsh/zshrc $HOME/.zshrc
+    mkdir $PWD/zsh/dotdir
+    ln -s $PWD/zsh/dotdir $HOME/.zsh
+    cd $PWD/zsh/dotdir
+    github_clone trapd00r/LS_COLORS
+    github_clone zsh-users/zsh-syntax-highlighting
+    github_clone dexgeh/ap
+    ;;
+  (top)
+    ln -s $PWD/top/toprc $HOME/.toprc
+    ;;
+  (xinit)
+    ln -s $PWD/xinit/xinitrc $HOME/.xinitrc
+    ;;
+  (xmonad)
+    ln -s $PWD/xmonad $HOME/.xmonad
+    ;;
+  (Xresources)
+    ln -s $PWD/Xresources/Xresources $HOME/.Xresources
+    ;;
+  (redshift)
+    mkdir -p $HOME/.config/
+    ln -s $PWD/redshift/ $HOME/.config/
+    ;;
+  (fonts)
+    for f in $PWD/fonts/* ; do
+      sudo ln -s $f /etc/fonts/conf.d/
+    done
+    ;;
+  (xdg)
+    xdg-user-dirs-update --set DESKTOP      $HOME/desktop
+    xdg-user-dirs-update --set DOCUMENTS    $HOME/documents
+    xdg-user-dirs-update --set DOWNLOAD     $HOME/download
+    xdg-user-dirs-update --set MUSIC        $HOME/music
+    xdg-user-dirs-update --set PICTURES     $HOME/pics
+    xdg-user-dirs-update --set VIDEOS       $HOME/videos
+    xdg-user-dirs-update --set PUBLICSHARE  $HOME/public
+    xdg-user-dirs-update --set TEMPLATES    $HOME/.Templates
+    ;;
+esac
+

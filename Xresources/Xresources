@@ -1,0 +1,58 @@
+xscreensaver.timeout: 2
+
+XTerm.faceSize: 14
+XTerm.background: black
+XTerm.foreground: white
+XTerm.fastScroll: true
+XTerm.boldMode: false
+XTerm.internalBorder: 1
+
+URxvt.geometry:100x30
+URxvt.depth:32
+URxvt.background:rgba:0000/0000/0000/bbbb
+URxvt.foreground:white
+URxvt.font:xft:Liberation Mono:pixelsize=16:antialias=true
+URxvt.inheritPixmap:false
+URxvt.xftAntialias:true
+URxvt.transparent:true
+URxvt.tintColor:black
+URxvt.fading:20
+URxvt.fadeColor: #453e40
+URxvt.perl-ext-common:default,matcher,tabbed
+URxvt.url-launcher:/usr/bin/firefox
+URxvt.matcher.button:1
+URxvt.scrollBar:false
+URxvt.termName:rxvt
+URxvt.color0:      #000000
+URxvt.color1:      #9e1828
+URxvt.color2:      #aece92
+URxvt.color3:      #968a38
+URxvt.color4:      #414171
+URxvt.color5:      #963c59
+URxvt.color6:      #418179
+URxvt.color7:      #bebebe
+URxvt.color8:      #666666
+URxvt.color9:      #cf6171
+URxvt.color10:     #c5f779
+URxvt.color11:     #fff796
+URxvt.color12:     #4186be
+URxvt.color13:     #cf9ebe
+URxvt.color14:     #71bebe
+URxvt.color15:     #ffffff
+URxvt.tabbed.tabbar-fg: 15
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 11
+URxvt.tabbed.tab-bg: 8
+URxvt.visualBell: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+
+Xft.autohint:  1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting:   1
+Xft.antialias: 1
+Xft.dpi:       96
+Xft.rgba:      rgb
+

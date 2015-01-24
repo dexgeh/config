@@ -1,0 +1,68 @@
+set runtimepath=~/.vim,$VIMRUNTIME
+set t_Co=256
+filetype off
+filetype plugin indent on
+set nocompatible
+set modelines=0
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.so,a.out,*.hi,*.o
+set visualbell
+set ttyfast
+set colorcolumn=80
+set backspace=indent,eol,start
+set laststatus=2
+set sm
+set ai
+set number
+set cursorline
+syntax on
+nnoremap / /\v
+vnoremap / /\v
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set showtabline=2
+set wrap
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+"code folding : toggle con za, tutto con zM e niente con zR
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
+call pathogen#infect()
+
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_auto_refresh_includes = 1
+let b:syntastic_c_cflags = ' -I/usr/include/libsoup-2.4'
+
+set shortmess+=I
+
+colorscheme slate
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"set background=dark
+
+runtime ftplugin/man.vim
+
