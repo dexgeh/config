@@ -69,5 +69,8 @@ case $1 in
     xdg-user-dirs-update --set PUBLICSHARE  $HOME/public
     xdg-user-dirs-update --set TEMPLATES    $HOME/.Templates
     ;;
+  (tmux)
+    ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+    ;;
 esac
 
