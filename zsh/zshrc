@@ -109,5 +109,5 @@ function u() {
 }
 
 function bak() {
-  cp $1 $1.$(date +%s)
+  cp -r $1 $1.$(date +%s)
 }
