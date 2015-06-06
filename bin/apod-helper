@@ -1,0 +1,92 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use utf8;
+
+use Getopt::Long;
+use LWP::UserAgent;
+use File::Copy;
+
+my $imageOnly;
+
+GetOptions (
+  "image-only" => \$imageOnly # get the image url
+)
+  or die();
+
+my $width = 1920;
+my $height = 1200;
+
+my $url = $ARGV[0];
+if ( ! $url ) {
+  $url = "http://apod.nasa.gov/apod/astropix.html";
+}
+
+my $ua = LWP::UserAgent->new;
+my $req = HTTP::Request->new(GET => $url);
+my $res = $ua->request($req);
+if ( ! $res->is_success ) {
+  print $res->status_line;
+  die;
+}
+my $page = $res->content;
+my $image = "";
+if ( $page =~ /^<IMG SRC="(.*)"$/m ) {
+  $image = "http://apod.nasa.gov/apod/" . $1;
+} else {
+  die;
+}
+
+if ( $imageOnly ) {
+  print $image;
+  exit 0;
+}
+if ( $page =~ /<b> Explanation: <\/b>(.*)<p> <center>/ms ) {
+  my $body = $1;
+  my $apodpage = <<END
+<!doctype html>
+<html>
+  <head>
+    <title>apod</title>
+    <style>
+      body {
+        background-image: url($image);
+        background-size: ${width}px;
+        background-repeat: none;
+      }
+      #explain {
+        background-color: black;
+        color: white;
+        float: right;
+        width: 50%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id=explain>
+      $body
+    </div>
+  </body>
+</html>
+END
+;
+  my $homedir = $ENV{'HOME'};
+  open(my $fh, '>', '/tmp/apod.html');
+  print $fh $apodpage;
+  close $fh;
+  system("wkhtmltoimage", "--width", "$width", "--height", "$height", "/tmp/apod.html", "/tmp/apod.png");
+  if ( $? == 0 ) {
+    system("feh", "--bg-fill", "/tmp/apod.png");
+    copy("/tmp/apod.png", "$homedir/apod/current.png");
+  } else {
+    system("feh", "--bg-fill", "$homedir/apod/current.png");
+  }
+} else {
+  die;
+}
+

@@ -1,0 +1,10 @@
+#!/bin/dash
+(
+  find $HOME -mindepth 1 -maxdepth 1 -name .\* -type d \
+    -not -name .config \
+    -and -not -name .cache \
+    -and -not -name .local
+  find $HOME/.config -mindepth 1 -maxdepth 1 -type d
+  find $HOME/.cache -mindepth 1 -maxdepth 1 -type d
+  find $HOME/.local/share -mindepth 1 -maxdepth 1 -type d
+) | xargs du -hs | sort -h
