@@ -64,6 +64,7 @@ alias sd='sudo systemctl'
 alias pgrep='pgrep -l'
 alias ag='ag --ignore-dir node_modules'
 alias pstree='pstree -ahlAu'
+alias pgrep='pgrep -a'
 
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
