@@ -17,4 +17,5 @@ nohup redshift >/dev/null 2>/dev/null &
 compton -b --backend glx
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
+xset r rate 200 60
 exec $HOME/.cabal/bin/xmonad
