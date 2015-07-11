@@ -32,7 +32,7 @@ if ( ! $res->is_success ) {
 }
 my $page = $res->content;
 my $image = "";
-if ( $page =~ /^<IMG SRC="(.*)"$/m ) {
+if ( $page =~ /^<IMG SRC="([^"]*?)"/m ) {
   $image = "http://apod.nasa.gov/apod/" . $1;
 } else {
   die;
