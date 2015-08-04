@@ -95,7 +95,7 @@ function m() {
   echo udevil mount /dev/$1
   udevil mount /dev/$1
   echo mounted media:
-  grep media =(mount)
+  grep media =(df -h)
 }
 
 function u() {
@@ -106,7 +106,7 @@ function u() {
     eject /dev/sr0
   fi
   echo mounted media:
-  grep media =(mount)
+  grep media =(df -h)
 }
 
 function bak() {
