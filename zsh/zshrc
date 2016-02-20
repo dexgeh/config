@@ -1,8 +1,8 @@
 # start X on login
-#if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
+if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
 #  PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:.
-#  exec startx
-#fi
+  exec startx
+fi
 
 #history
 HISTFILE=~/.histfile
@@ -67,7 +67,7 @@ alias pstree='pstree -ahlAu'
 alias pgrep='pgrep -a'
 
 export EDITOR=/usr/bin/vim
-export BROWSER=/usr/bin/firefox
+export BROWSER=/usr/bin/dwb
 
 # welcome line
 if [[ ! -z $COLUMNS ]]; then
@@ -110,5 +110,5 @@ function u() {
 }
 
 function bak() {
-  cp -r $1 $1.$(date +%s)
+  cp -r $1 $1.$(date +%Y%m%d-%H%M%S)
 }
