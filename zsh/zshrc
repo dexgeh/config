@@ -51,7 +51,7 @@ RPROMPT='%~ %(?..[%?] )%*'
 [[ -z $LS_COLORS ]] && eval $(dircolors -b ~/.zsh/LS_COLORS/LS_COLORS)
 
 #aliases
-alias ls='ls -lFh --color=always --group-directories-first'
+alias ls='ls -lFh --color=always --group-directories-first --quoting-style=literal'
 alias sl='sl -alF && ls -lFhSr --color=always'
 alias cp='cp -v'
 alias mv='mv -vi'
