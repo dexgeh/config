@@ -9,12 +9,11 @@ fi
 
 xrdb -merge $HOME/.Xresources
 eval $(gpg-agent --daemon)
-feh --bg-center $HOME/pics/XMonad-keybindings.png
 $HOME/bin/apod-helper &
 urxvtd -f
 pulseaudio -D
 nohup redshift >/dev/null 2>/dev/null &
-compton -b --backend glx
+compton --backend glx &
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
 xset r rate 200 60
