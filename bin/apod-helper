@@ -42,7 +42,7 @@ if ( $imageOnly ) {
   print $image;
   exit 0;
 }
-if ( $page =~ /<b> Explanation: <\/b>(.*)<p> <center>/ms ) {
+if ( $page =~ /<b> Explanation: <\/b>(.*)<p>[ ]?<center>/ms ) {
   my $body = $1;
   my $apodpage = <<END
 <!doctype html>
