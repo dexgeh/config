@@ -9,7 +9,7 @@ fi
 
 xrdb -merge $HOME/.Xresources
 eval $(gpg-agent --daemon)
-(sleep 5 && $HOME/bin/apod-helper) &
+# (sleep 5 && $HOME/bin/apod-helper) &
 urxvtd -f
 pulseaudio -D
 nohup redshift >/dev/null 2>/dev/null &
