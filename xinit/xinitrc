@@ -12,10 +12,10 @@ eval $(gpg-agent --daemon)
 # (sleep 5 && $HOME/bin/apod-helper) &
 urxvtd -f
 pulseaudio -D
-nohup redshift >/dev/null 2>/dev/null &
+systemctl --user start redshift
 compton --backend glx &
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
 xset r rate 200 60
-udiskie -a -T --no-appindicator -F -0 -N &
+systemctl --user start udiskie
 exec $HOME/.cabal/bin/xmonad

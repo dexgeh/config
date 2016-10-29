@@ -1,0 +1,7 @@
+[Unit]
+Description=automounter
+
+[Service]
+ExecStart=/usr/bin/udiskie -a -T --no-appindicator -F -0 -N
+Restart=always
+
