@@ -1,0 +1,7 @@
+[Service]
+Descrption=urxvtd
+
+[Unit]
+ExecStart=/usr/bin/urxvtd
+Restart=always
+
