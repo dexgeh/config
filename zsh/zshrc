@@ -91,7 +91,7 @@ alias pstree='pstree -ahlAu'
 alias pgrep='pgrep -a'
 
 export EDITOR=/usr/bin/vim
-export BROWSER=/usr/bin/google-chrome-stable
+export BROWSER=/usr/bin/firefox
 
 # welcome line
 if [[ ! -z $COLUMNS ]]; then
