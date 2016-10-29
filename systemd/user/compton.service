@@ -1,0 +1,6 @@
+[Unit]
+Description=compositor
+
+[Service]
+ExecStart=/usr/bin/compton --backend glx
+
