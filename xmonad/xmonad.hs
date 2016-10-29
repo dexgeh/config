@@ -27,9 +27,6 @@ main = do
       ]
     , startupHook = setWMName "LG3D"
     , handleEventHook = hintsEventHook <+> fullscreenEventHook
-    , logHook = dynamicLogWithPP defaultPP
-      { ppOutput = writeFile "/tmp/xmonad-status"
-      }
     }
     `additionalKeys`
     [ ((mod4Mask, xK_b), sendMessage ToggleStruts)
