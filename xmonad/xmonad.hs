@@ -11,6 +11,7 @@ import XMonad.Util.EZConfig
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.LayoutHints
 import XMonad.StackSet (sink, focusUp, shiftMaster)
+import XMonad.Layout.Spacing
 
 main = do
   xmonad $ ewmh defaultConfig
@@ -18,8 +19,9 @@ main = do
     , modMask = mod4Mask
     , borderWidth = 0
     , workspaces = map show [1..9]
-    , layoutHook = let tiled = Tall 1 (3/100) (56/100)
-                       layout = tiled ||| Full
+    , layoutHook = let tiled  = Tall 1 (3/100) (56/100)
+                       spaced = spacing 8 $ tiled
+                       layout = spaced ||| tiled ||| Full
         in smartBorders . avoidStruts . showWName $ layout
     , manageHook = composeAll
       [ doFloat
