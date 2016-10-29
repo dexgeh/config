@@ -72,5 +72,7 @@ case $1 in
   (tmux)
     ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
     ;;
+  (systemd-user)
+    ln -s $PWD/systemd $HOME/.config/
 esac
 
