@@ -17,4 +17,5 @@ compton --backend glx &
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
 xset r rate 200 60
+udiskie -a -T --no-appindicator -F -0 -N
 exec $HOME/.cabal/bin/xmonad
