@@ -20,7 +20,7 @@ main = do
     , borderWidth = 0
     , workspaces = map show [1..9]
     , layoutHook = let tiled  = Tall 1 (3/100) (56/100)
-                       spaced = spacing 8 $ tiled
+                       spaced = spacing 12 $ tiled
                        layout = spaced ||| tiled ||| Full
         in smartBorders . avoidStruts . showWName $ layout
     , manageHook = composeAll
