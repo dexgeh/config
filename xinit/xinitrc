@@ -11,9 +11,10 @@ xrdb -merge $HOME/.Xresources
 eval $(gpg-agent --daemon)
 # (sleep 5 && $HOME/bin/apod-helper) &
 pulseaudio -D
-systemctl --user start redshift
+(sleep 2 && systemctl --user start redshift) &
 systemctl --user start compton
 systemctl --user start urxvtd
+systemctl --user start dunst
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
 xset r rate 200 60
