@@ -1,5 +1,5 @@
 [Unit]
-Descrption=urxvtd
+Description=urxvtd
 
 [Service]
 ExecStart=/usr/bin/urxvtd
