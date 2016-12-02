@@ -20,10 +20,9 @@ unset TERMCAP
 unset MANPATH
 
 # start X on login
-#if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
-#  PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:.
-#  exec startx
-#fi
+if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
+  PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:. exec startx
+fi
 
 # temp fix
 #xrdb -merge ~/.Xresources
