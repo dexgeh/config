@@ -24,10 +24,6 @@ case $1 in
     github_clone Lokaltog/vim-powerline
     github_clone ervandew/supertab
     github_clone Townk/vim-autoclose
-    github_clone mtscout6/vim-cjsx
-    github_clone kchmck/vim-coffee-script
-    github_clone wavded/vim-stylus
-    github_clone wting/rust.vim
     ;;
   (zsh)
     ln -s $PWD/zsh/zshrc $HOME/.zshrc
