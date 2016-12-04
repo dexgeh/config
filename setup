@@ -64,6 +64,8 @@ case $1 in
     xdg-user-dirs-update --set VIDEOS       $HOME/videos
     xdg-user-dirs-update --set PUBLICSHARE  $HOME/public
     xdg-user-dirs-update --set TEMPLATES    $HOME/.Templates
+    xdg-mime default firefox.desktop x-scheme-handler/http
+    xdg-mime default firefox.desktop x-scheme-handler/https
     ;;
   (tmux)
     ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
