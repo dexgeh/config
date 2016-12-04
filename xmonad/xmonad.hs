@@ -15,7 +15,7 @@ import XMonad.Layout.Spacing
 
 main = do
   xmonad $ ewmh defaultConfig
-    { terminal = "urxvtc"
+    { terminal = "terminology"
     , modMask = mod4Mask
     , borderWidth = 0
     , workspaces = map show [1..9]
