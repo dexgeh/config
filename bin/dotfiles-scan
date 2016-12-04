@@ -1,9 +1,9 @@
-#!/bin/dash
-cd $HOME
-(
-  find . -mindepth 1 -maxdepth 1 -name .\* -type d \
-    -not -name .config \
-    -and -not -name .cache \
-    -and -not -name .local -print0
-  find ./.cache ./.config ./.local/share -mindepth 1 -maxdepth 1 -type d -print0
-) | xargs -0 du -hs | sort -h
+#!/usr/bin/zsh
+du -sh $HOME/{.,.config/,.local/share/,.cache/}* \
+  --exclude=. \
+  --exclude=.. \
+  --exclude=.config \
+  --exclude=.local \
+  --exclude=.cache \
+  | sort -h
+
