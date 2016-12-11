@@ -20,9 +20,9 @@ unset TERMCAP
 unset MANPATH
 
 # start X on login
-if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
-  PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:. exec startx
-fi
+# if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
+#   PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:. exec startx
+# fi
 
 # temp fix
 #xrdb -merge ~/.Xresources
@@ -50,13 +50,14 @@ setopt sharehistory
 # rework on fixing my keys!
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
-if [[ $TERM = xterm ]]; then
+if [[ $TERM = xterm ]] || [[ $TERM = xterm-256color ]]; then
   bindkey '^[[H' beginning-of-line
   bindkey '^[[F' end-of-line
 elif [[ $TERM = rxvt ]]; then
   bindkey '^[[7~' beginning-of-line
   bindkey '^[[8~' end-of-line
 fi
+bindkey '^[[3~' delete-char
 
 #autocomplete
 fpath=(~/.zsh/completion $fpath)
