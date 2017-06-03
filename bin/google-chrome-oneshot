@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+google-chrome-stable
+echo -n Deleting files...
+rm -rf $HOME/.config/google-chrome $HOME/.cache/google-chrome
+echo OK
+
+

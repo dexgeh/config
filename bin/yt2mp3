@@ -1,0 +1,2 @@
+#!/bin/sh
+exec youtube-dl -o "%(title)s.%(ext)s" --extract-audio --audio-format="mp3" "$1"
