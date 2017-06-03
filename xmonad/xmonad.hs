@@ -17,7 +17,9 @@ main = do
   xmonad $ ewmh defaultConfig
     { terminal = "terminology"
     , modMask = mod4Mask
-    , borderWidth = 0
+    , borderWidth = 2
+    , normalBorderColor = "darkgray"
+    , focusedBorderColor = "darkred"
     , workspaces = map show [1..9]
     , layoutHook = let tiled  = Tall 1 (3/100) (56/100)
                        spaced = spacing 12 $ tiled
