@@ -87,7 +87,7 @@ RPROMPT='%~ %(?..[%?] )%*'
 
 #aliases
 alias ls='ls -lFh --color=always --group-directories-first --quoting-style=literal --time-style long-iso'
-alias sl='sl -alF && ls -lFhSr --color=always'
+alias sl='sl -alF && ls'
 alias cp='cp -v'
 alias mv='mv -vi'
 alias rm='rm -v'
