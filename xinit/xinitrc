@@ -10,14 +10,19 @@ fi
 xrdb -merge $HOME/.Xresources
 pgrep gpg-agent || eval $(gpg-agent --daemon)
 pulseaudio -D
-systemctl --user start compton
-systemctl --user start urxvtd
-systemctl --user start dunst
-systemctl --user start udiskie
-systemctl --user start redshift
+# systemctl --user start compton
+# systemctl --user start urxvtd
+systemctl --user restart dunst
+systemctl --user restart udiskie
+systemctl --user restart redshift
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
 xset r rate 200 60
 xset +dpms
-feh --bg-center ~/pics/earth_moon.jpg
-exec $HOME/.cabal/bin/xmonad
+# feh --bg-center ~/pics/earth_moon.jpg
+# ccsm &
+# exec $HOME/.cabal/bin/xmonad
+# ( sleep 2 && ccsm )&
+( sleep 2 && docky )&
+exec compiz
+
