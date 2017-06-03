@@ -2,7 +2,7 @@
 umask 022
 
 # Set our default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/bin"
 export PATH
 
 # Load profiles from /etc/profile.d
@@ -20,9 +20,9 @@ unset TERMCAP
 unset MANPATH
 
 # start X on login
-# if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
-#   PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:. exec startx
-# fi
+if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
+  exec startx
+fi
 
 # temp fix
 #xrdb -merge ~/.Xresources
@@ -86,7 +86,7 @@ RPROMPT='%~ %(?..[%?] )%*'
 [[ -z $LS_COLORS ]] && eval $(dircolors -b ~/.zsh/LS_COLORS/LS_COLORS)
 
 #aliases
-alias ls='ls -lFh --color=always --group-directories-first --quoting-style=literal'
+alias ls='ls -lFh --color=always --group-directories-first --quoting-style=literal --time-style long-iso'
 alias sl='sl -alF && ls -lFhSr --color=always'
 alias cp='cp -v'
 alias mv='mv -vi'
@@ -120,15 +120,17 @@ ZSH_HIGHLIGHT_STYLES[globbing]='fg=white,bold'
 
 function serve() {
     PORT=$(expr 65536 - $$)
-    $BROWSER http://127.0.0.1:$PORT/
+    (sleep 2 && $BROWSER http://127.0.0.1:$PORT/ )&
     python -m http.server $PORT
 }
 
 source $HOME/.zsh/ap/ap.zsh
 
 function m() {
-  echo udevil mount /dev/$1
-  udevil mount /dev/$1
+  if [[ "$1" != "" ]]; then
+    echo udevil mount /dev/$1
+    udevil mount /dev/$1
+  fi
   echo mounted media:
   grep media =(df -h)
 }
@@ -153,3 +155,11 @@ PERL5LIB="/home/milky/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="/home/milky/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/milky/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/milky/perl5"; export PERL_MM_OPT;
+
+# export TERM=xterm-256color
+# source $HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+
+
+fortune -sa it
