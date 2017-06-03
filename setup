@@ -24,6 +24,7 @@ case $1 in
     github_clone Lokaltog/vim-powerline
     github_clone ervandew/supertab
     github_clone Townk/vim-autoclose
+    github_clone sickill/vim-monokai
     ;;
   (zsh)
     ln -s $PWD/zsh/zshrc $HOME/.zshrc

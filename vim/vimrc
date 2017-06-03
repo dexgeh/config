@@ -59,7 +59,8 @@ let b:syntastic_c_cflags = ' -I/usr/include/libsoup-2.4'
 
 set shortmess+=I
 
-colorscheme slate
+"colorscheme slate
+colorscheme monokai
 "let g:solarized_termcolors=256
 "colorscheme solarized
 "set background=dark
