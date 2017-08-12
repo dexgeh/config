@@ -86,20 +86,19 @@ RPROMPT='%~ %(?..[%?] )%*'
 [[ -z $LS_COLORS ]] && eval $(dircolors -b ~/.zsh/LS_COLORS/LS_COLORS)
 
 #aliases
-alias ls='ls -lFh --color=always --group-directories-first --quoting-style=literal --time-style long-iso'
-alias sl='sl -alF && ls'
-alias cp='cp -v'
-alias mv='mv -vi'
-alias rm='rm -v'
+local LS_ALIAS='ls -l --classify --human-readable --color=always --group-directories-first --quoting-style=literal --time-style long-iso'
+alias ls="$LS_ALIAS"
+alias sl="sl && $LS_ALIAS"
+alias cp='cp --verbose'
+alias mv='mv --verbose --interactive'
+alias rm='rm --verbose'
 alias grep='LANG=C grep --color=auto'
 alias egrep='LANG=C egrep --color=auto'
-alias ag='LANG=C ag'
 alias tree='tree -L 2 --dirsfirst'
 alias sd='sudo systemctl'
-alias pgrep='pgrep -l'
-alias ag='ag --ignore-dir node_modules'
-alias pstree='pstree -ahlAu'
-alias pgrep='pgrep -a'
+alias pgrep='pgrep --list-full'
+alias ag='LANG=C ag --ignore-dir node_modules'
+alias pstree='pstree --arguments --highlight-all --long --ascii --uid-changes'
 
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
