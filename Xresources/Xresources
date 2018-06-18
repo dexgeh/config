@@ -11,7 +11,7 @@ URxvt.geometry:100x30
 URxvt.depth:32
 URxvt.background:rgba:0000/0000/0000/bbbb
 URxvt.foreground:white
-URxvt.font:xft:Liberation Mono:pixelsize=16:antialias=true
+URxvt.font:xft:Liberation Mono:pixelsize=32:antialias=true
 URxvt.inheritPixmap:false
 URxvt.xftAntialias:true
 URxvt.transparent:true
