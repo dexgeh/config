@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env sh
 du -sh $HOME/{.,.config/,.local/share/,.cache/}* \
   --exclude=. \
   --exclude=.. \

@@ -1,0 +1,1 @@
+exec ~/bin/yt2mp3 "$(xsel -b)"

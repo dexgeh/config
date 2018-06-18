@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-google-chrome-stable --force-device-scale-factor=2 #--proxy-server=http://10.8.0.1:3128
+google-chrome-stable --force-device-scale-factor=2 $(xsel -b) #--proxy-server=http://10.8.0.1:3128
 echo -n Deleting files...
 rm -rf $HOME/.config/google-chrome $HOME/.cache/google-chrome
 echo OK
