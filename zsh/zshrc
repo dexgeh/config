@@ -19,8 +19,11 @@ unset TERMCAP
 # Man is much better than us at figuring this out
 unset MANPATH
 
+export SSLKEYLOGFILE=$HOME/.sslkeylog
+
 # start X on login
 if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
+  rm $SSLKEYLOGFILE
   exec startx
 fi
 
