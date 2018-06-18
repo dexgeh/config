@@ -1,0 +1,20 @@
+conky.config = {
+  alignment = "bottom_right",
+  own_window = true,
+  own_window_type = "dock",
+  own_window_argb_visual = true,
+  own_window_argb_value = 255,
+  own_window_transparent = true,
+  gap_y = 0,
+  gap_x = 0,
+  pad_percents = 10,
+  use_xft = true,
+  draw_shades = false,
+  maximum_width = 3840,
+  update_interval = 60
+};
+
+conky.text = [[
+  ${font Liberation Mono:size=32:bold}${time %A, %d %B %H:%M} 
+]];
+
