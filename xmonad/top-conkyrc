@@ -1,5 +1,5 @@
 conky.config = {
-  alignment = "bottom_right",
+  alignment = "top_left",
   own_window = true,
   own_window_type = "dock",
   own_window_argb_visual = true,
@@ -11,11 +11,12 @@ conky.config = {
   use_xft = true,
   draw_shades = false,
   maximum_width = 3840,
-  update_interval = 60,
-  double_buffer = true
+  update_interval = 1,
+  double_buffer = true,
+  lua_load = '~/.xmonad/conky-xmonad-status.lua'
 };
 
 conky.text = [[
-  ${font Liberation Mono:size=32:bold}${time %A, %d %B %H:%M} 
+  ${font Liberation Mono:size=32:bold}${lua xmonadStatus}
 ]];
 

@@ -11,10 +11,11 @@ conky.config = {
   use_xft = true,
   draw_shades = false,
   maximum_width = 3840,
-  update_interval = 2
+  update_interval = 2,
+  double_buffer = true
 };
 
 conky.text = [[
-  ${font Liberation Mono:size=32:bold}CPU ${cpugraph 30,200} MEM ${memgraph 30,200} DISK ${diskiograph 30,200} NET ↓ ${downspeed enp0s31f6} ↑ ${upspeed enp0s31f6}
+  ${font Liberation Mono:size=32:bold}CPU ${cpugraph 30,200} MEM ${memgraph 30,200} DISK ${diskiograph 30,200} NET ↓ ${downspeedgraph enp0s31f6 30,100} ↑ ${upspeedgraph enp0s31f6 30,100}
 ]];
 
