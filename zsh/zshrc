@@ -5,14 +5,6 @@ umask 022
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/bin"
 export PATH
 
-# Load profiles from /etc/profile.d
-if test -d /etc/profile.d/; then
-	for profile in /etc/profile.d/*.sh; do
-		test -r "$profile" && . "$profile"
-	done
-	unset profile
-fi
-
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
 
@@ -23,7 +15,9 @@ export SSLKEYLOGFILE=$HOME/.sslkeylog
 
 # start X on login
 if [[ -z $DISPLAY ]] && [[ $TTY = /dev/tty1 ]] ; then
-  rm $SSLKEYLOGFILE
+  rm -f $SSLKEYLOGFILE
+  echo sudo Fn keys
+  echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
   exec startx
 fi
 
@@ -102,6 +96,7 @@ alias sd='sudo systemctl'
 alias pgrep='pgrep --list-full'
 alias ag='LANG=C ag --ignore-dir node_modules'
 alias pstree='pstree --arguments --highlight-all --long --ascii --uid-changes'
+alias tm='tmux attach || tmux new'
 
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
@@ -164,4 +159,4 @@ PERL_MM_OPT="INSTALL_BASE=/home/milky/perl5"; export PERL_MM_OPT;
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 
 
-fortune -sa it
+# fortune -sa it
