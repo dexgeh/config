@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec rofi -font "Liberation Mono 32" -combi-modi run,drun,window -show combi
