@@ -19,7 +19,7 @@ set wildmode=list:longest
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.so,a.out,*.hi,*.o
 set visualbell
 set ttyfast
-set colorcolumn=80
+"set colorcolumn=80
 set backspace=indent,eol,start
 set laststatus=2
 set sm
@@ -59,8 +59,8 @@ let b:syntastic_c_cflags = ' -I/usr/include/libsoup-2.4'
 
 set shortmess+=I
 
-"colorscheme slate
-colorscheme monokai
+colorscheme slate
+"colorscheme monokai
 "let g:solarized_termcolors=256
 "colorscheme solarized
 "set background=dark
