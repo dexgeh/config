@@ -7,26 +7,44 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+# nvidia-settings --assign GPULogoBrightness=0
+# nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 xrdb -merge $HOME/.Xresources
 pgrep gpg-agent || eval $(gpg-agent --daemon)
-pulseaudio -D
-systemctl --user restart compton
+#systemctl --user restart compton
+systemctl --user restart picom
+#systemctl --user restart xcompmgr
 systemctl --user restart urxvtd
 systemctl --user restart dunst
 systemctl --user restart udiskie
 systemctl --user restart redshift
+systemctl --user restart xbindkeys
 xsetroot -cursor_name left_ptr
 setxkbmap us -option compose:rctrl -option terminate:ctrl_alt_bksp
 xset r rate 200 60
 xset +dpms
 # feh --bg-center ~/pics/earth_moon.jpg
-feh --bg-center ~/pics/firewatch.jpg
+# feh --bg-center ~/pics/firewatch.jpg
+feh --bg-center ~/pics/cyberpunk.png
 # ccsm &
 # ( sleep 2 && ccsm )&
 # ( sleep 2 && docky )&
 # exec compiz
 # exec $HOME/.cabal/bin/xmonad
-LANG=it_IT.UTF-8 conky -c .xmonad/left-conkyrc &
-LANG=it_IT.UTF-8 conky -c .xmonad/right-conkyrc &
-exec xmonad
+# sleep 5
+# systemctl --user restart pulseaudio
+# LANG=it_IT.UTF-8 conky -c .xmonad/left-conkyrc &
+# sleep 1
+# LANG=it_IT.UTF-8 conky -c .xmonad/right-conkyrc &
+# LANG=it_IT.UTF-8 conky -c .xmonad/top-conkyrc &
+# sleep 1
+# trayer --edge top --align right --widthtype pixel --width 320 --heighttype pixel --height 32 --SetDockType true --transparent true --alpha 255 --expand true --iconspacing 10 &
+# flameshot &
+# exec xmonad
+# exec i3
+mmaker -vf OpenBox
+tint2 &
+exec openbox
 
+# export DESKTOP_SESSION=plasma
+# exec startplasma-x11
