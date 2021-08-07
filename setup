@@ -73,5 +73,7 @@ case $1 in
     ;;
   (systemd-user)
     ln -s $PWD/systemd $HOME/.config/
+  (openbox)
+    ln -s $PWD/openbox $HOME/.config/
 esac
 
