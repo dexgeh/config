@@ -1,0 +1,7 @@
+[Unit]
+Description=compositor
+
+[Service]
+ExecStart=/usr/bin/picom --vsync --backend xrender
+Restart=always
+

@@ -1,0 +1,7 @@
+[Unit]
+Description=map trackball buttons
+
+[Service]
+ExecStart=/usr/bin/xbindkeys -n
+Restart=always
+
